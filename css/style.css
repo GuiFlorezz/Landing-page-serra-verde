@@ -1,0 +1,322 @@
+/* 1. Design tokens */
+:root {
+  color-scheme: light;
+
+  /* Paleta Serra Verde */
+  --color-forest: #244b35;
+  --color-cream: #f5f2e9;
+  --color-sage: #91a887;
+  --color-sand: #d9b982;
+  --color-ink: #26352b;
+  --color-paper: #fffdf8;
+  --color-forest-hover: #193a28;
+
+  /* Tipografia: use DM Serif Display/Inter caso estejam instaladas. */
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body: Inter, "Segoe UI", Arial, sans-serif;
+
+  /* Espaçamento, largura e acabamento */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+  --space-6: 4.5rem;
+  --space-7: 7rem;
+  --content-width: 72rem;
+  --page-gutter: clamp(1.25rem, 5vw, 4rem);
+  --radius-small: 0.25rem;
+  --focus-ring: 0 0 0 3px var(--color-sand);
+}
+
+/* 2. Base and typography */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-forest);
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+h1 {
+  max-width: 13ch;
+  margin-bottom: var(--space-3);
+  color: var(--color-cream);
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  margin-bottom: var(--space-3);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  margin-bottom: var(--space-2);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+}
+
+p {
+  max-width: 65ch;
+  margin-bottom: var(--space-2);
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  border-radius: var(--radius-small);
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* 3. Header and navigation */
+.site-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 5.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--page-gutter);
+  background: var(--color-cream);
+}
+
+.logo {
+  color: var(--color-forest);
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.site-header nav ul {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-header nav a {
+  color: var(--color-forest);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: 0.3em;
+}
+
+.site-header nav a:hover {
+  color: var(--color-forest-hover);
+  text-decoration: underline;
+}
+
+/* 4. Hero */
+.hero {
+  display: flex;
+  min-height: min(44rem, 78vh);
+  align-items: center;
+  padding: var(--space-7) var(--page-gutter);
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+
+.hero__content {
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+}
+
+.hero__eyebrow {
+  margin-bottom: var(--space-2);
+  color: var(--color-sand);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero__content > p:not(.hero__eyebrow) {
+  max-width: 48ch;
+  margin-bottom: var(--space-4);
+  color: var(--color-cream);
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+}
+
+/* 5. Page sections and highlights */
+main > section:not(.hero) {
+  padding: var(--space-7) var(--page-gutter);
+}
+
+main > section:not(.hero) > h2,
+main > section:not(.hero) > p,
+.highlights {
+  width: min(100%, var(--content-width));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#sobre > p,
+#contato > p {
+  font-size: 1.1rem;
+}
+
+#destaques {
+  background: var(--color-sage);
+}
+
+#destaques h2,
+#destaques h3 {
+  color: var(--color-forest);
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.highlight {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-forest);
+}
+
+.highlight p {
+  margin-bottom: 0;
+}
+
+#contato {
+  background: var(--color-paper);
+}
+
+/* 6. Buttons */
+.button {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-small);
+  background: var(--color-sand);
+  color: var(--color-forest);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.button:hover {
+  border-color: var(--color-cream);
+  background: var(--color-cream);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-cream);
+  outline-offset: 3px;
+  box-shadow: var(--focus-ring);
+}
+
+/* 7. Footer */
+.site-footer {
+  padding: var(--space-3) var(--page-gutter);
+  background: var(--color-forest);
+  color: var(--color-cream);
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0 auto;
+  font-size: 0.875rem;
+}
+
+/* 8. Responsive layout */
+@media (max-width: 48rem) {
+  :root {
+    --space-6: 3.5rem;
+    --space-7: 5rem;
+  }
+
+  .site-header {
+    min-height: 5rem;
+  }
+
+  .highlights {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .hero {
+    min-height: 36rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-block: var(--space-3);
+  }
+
+  .site-header nav {
+    width: 100%;
+  }
+
+  .site-header nav ul {
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+  }
+
+  .hero {
+    min-height: 32rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
