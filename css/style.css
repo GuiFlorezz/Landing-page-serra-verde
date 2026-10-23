@@ -195,6 +195,7 @@ main > section:not(.hero) > p,
   font-size: 1.1rem;
 }
 
+
 /*======SEÇAO SERVIÇOS=======*/
 #servicos {
   background: var(--color-paper);
@@ -256,6 +257,32 @@ main > section:not(.hero) > p,
   object-fit: cover;
 }
 /*=============================*/
+
+/*====Seção sobre*====*/
+#sobre {
+  display: grid;
+  max-width: 80rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  column-gap: var(--space-6);
+  margin-inline: auto;
+}
+
+#sobre > h2,
+#sobre > h3 {
+  grid-column: 1;
+}
+
+#sobre > img {
+  width: 100%;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  border: 6px solid var(--color-forest);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-small);
+  object-fit: cover;
+}
+/*========*/
 
 #destaques {
   background: var(--color-sage);
@@ -340,6 +367,10 @@ main > section:not(.hero) > p,
     min-height: 5rem;
   }
 
+  #sobre {
+    column-gap: var(--space-4);
+  }
+
   .highlights {
     grid-template-columns: 1fr;
     gap: var(--space-4);
@@ -355,6 +386,18 @@ main > section:not(.hero) > p,
 }
 
 @media (max-width: 34rem) {
+  #sobre {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-2);
+  }
+
+  #sobre > h2,
+  #sobre > h3,
+  #sobre > img {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .site-header {
     align-items: flex-start;
     flex-direction: column;
