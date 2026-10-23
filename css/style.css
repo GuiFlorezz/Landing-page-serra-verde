@@ -145,7 +145,7 @@ a:focus-visible {
   text-decoration: underline;
 }
 
-/* 4. Hero */
+/*=======SEÇÃO HERO======*/
 .hero {
   display: flex;
   min-height: min(44rem, 78vh);
@@ -175,6 +175,7 @@ a:focus-visible {
   color: var(--color-cream);
   font-size: clamp(1.05rem, 1.6vw, 1.2rem);
 }
+/*============================*/
 
 /* 5. Page sections and highlights */
 main > section:not(.hero) {
@@ -193,6 +194,95 @@ main > section:not(.hero) > p,
 #contato > p {
   font-size: 1.1rem;
 }
+
+
+/*======SEÇAO SERVIÇOS=======*/
+#servicos {
+  background: var(--color-paper);
+}
+
+.services__intro {
+  font-size: 1.1rem;
+}
+
+.services-carousel {
+  --bs-carousel-items: 3;
+  --bs-carousel-items-gap: var(--space-3);
+  --bs-carousel-control-icon-width: 1rem;
+  width: min(100%, var(--content-width));
+  margin: var(--space-5) auto 0;
+}
+
+.services-carousel__toolbar {
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.services-carousel__hint {
+  color: var(--color-forest);
+  font-size: 0.9rem;
+}
+
+.services-carousel__controls {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--space-1);
+}
+
+.services-carousel .btn-icon {
+  border: 1px solid var(--color-forest);
+  border-radius: var(--radius-small);
+  background: var(--color-cream);
+  color: var(--color-forest);
+}
+
+.services-carousel .btn-icon:hover:not(:disabled) {
+  background: var(--color-forest);
+  color: var(--color-cream);
+}
+
+.services-carousel .btn-icon:focus-visible {
+  outline: 3px solid var(--color-sand);
+  outline-offset: 3px;
+}
+
+.services-carousel .btn-icon:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.services .carousel-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+/*=============================*/
+
+/*====Seção sobre*====*/
+#sobre {
+  display: grid;
+  max-width: 80rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  column-gap: var(--space-6);
+  margin-inline: auto;
+}
+
+#sobre > h2,
+#sobre > h3 {
+  grid-column: 1;
+}
+
+#sobre > img {
+  width: 100%;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  border: 6px solid var(--color-forest);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-small);
+  object-fit: cover;
+}
+/*========*/
 
 #destaques {
   background: var(--color-sage);
@@ -277,9 +367,17 @@ main > section:not(.hero) > p,
     min-height: 5rem;
   }
 
+  #sobre {
+    column-gap: var(--space-4);
+  }
+
   .highlights {
     grid-template-columns: 1fr;
     gap: var(--space-4);
+  }
+
+  .services-carousel {
+    --bs-carousel-items: 2;
   }
 
   .hero {
@@ -288,6 +386,18 @@ main > section:not(.hero) > p,
 }
 
 @media (max-width: 34rem) {
+  #sobre {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-2);
+  }
+
+  #sobre > h2,
+  #sobre > h3,
+  #sobre > img {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
   .site-header {
     align-items: flex-start;
     flex-direction: column;
@@ -306,6 +416,19 @@ main > section:not(.hero) > p,
 
   .hero {
     min-height: 32rem;
+  }
+}
+
+@media (max-width: 34rem) {
+  .services-carousel {
+    --bs-carousel-items: 1;
+    --bs-carousel-items-peek: 1rem;
+    --bs-carousel-items-gap: var(--space-2);
+  }
+
+  .services-carousel__hint {
+    max-width: 18ch;
+    line-height: 1.4;
   }
 }
 
